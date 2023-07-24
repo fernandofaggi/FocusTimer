@@ -1,0 +1,185 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --hue: 240;
+  --text-color:hsl(var(--hue), 5%, 7%);
+  --bg-color:hsl(var(--hue), 40%, 98%);
+  --primary-color:hsl(var(--hue), 6%, 21%);
+  --controls-bg-color:hsl(var(--hue), 0%, 14%);
+  --button-secondary:hsl(var(--hue), 40%, 98%);
+  --buttonMusic-bg-color:hsla(240, 9%, 89%, 1);
+  --buttonMusic-bg-color-secondary:hsla(194, 97%, 31%, 1);
+  
+  /* Ajusta a fonte de acordo coma variação do tamanho da Janela */
+  font-size: clamp(40%, 1% + 2vw , 62.5%);
+}
+
+html.light{
+  --bg-color:hsl(var(--hue), 5%, 7%);
+  --text-color:hsl(var(--hue), 40%, 98%);
+  
+  --controls-bg-color:hsla(var(--hue), 7%, 78%, 1);
+  --buttonMusic-bg-color:hsla(240, 6%, 17%, 1);
+  --buttonMusic-bg-color-secondary:hsla(195, 74%, 15%, 1);
+    
+    
+
+  }
+
+  /* Se tem a classe Light coloca o icone Sol se nao tem a classe light coloca Lua */
+  html.light .ph-moon,
+  html:not(.light) .ph-sun {
+  
+    display: none;
+  }
+
+  /* Coloca o icone sol ou lua la no topo a esquerda e varia a cor de acordo com a variavel */
+  #toggle-mode {
+    position: absolute;
+    right: 3.2rem;
+    top: 3.2rem;
+    font-size: 3.2rem;
+    line-height: 0;
+
+    color: var(--text-color);
+  }
+
+
+
+
+
+  /* Acessibilidade */
+  .sr-only{
+    width: 1px;
+    height: 1px;
+    position: absolute; 
+    /* esconde o texto */
+    overflow: hidden;
+    margin: -1px;
+    padding: 0px;
+    border: 0;
+    appearance: none;
+  }
+
+  body{
+    background-color: var(--bg-color) ;
+    color: var(--text-color);
+
+    display: grid;
+    height: 100vh;
+    place-content: center;
+  }
+
+  #app {
+    display: flex;
+    justify-items: center;
+  }
+
+
+  .flex {
+    display: flex;
+  }
+
+  #timer {
+    position: relative;
+    left: 60px;
+    font-size: 9.6rem;
+    font-weight: bold;
+    font-family: sans-serif;
+    
+
+  }
+
+  #controls {
+    margin-top: 1.6rem;
+    padding: 2.2rem 4rem;
+    gap: 1.6rem;
+     
+  }
+
+
+  .musicButtons {
+    
+    position: absolute;
+    left: 870px;
+    top: 200px;
+    align-items: center;
+    display:grid;
+    margin-top: 1.6rem;
+    padding: 4rem 4rem;
+    gap: 1.6rem;
+    font-size: 15rem;
+    
+    
+    
+  }
+
+  .musicButtons button{
+    background-color:var(--buttonMusic-bg-color);
+    font-size: 14.4rem;
+    padding: 2rem;
+    border-radius: 2rem;
+
+  }
+
+
+
+  button{
+    background-color: transparent;
+    border: 0;
+    color: var(--primary-color);
+    
+    cursor: pointer;
+    font-size: 6.4rem;
+  }
+  
+
+
+
+  /* Controls Faz a logica dos botoes adicionando ou removendo as classes running e music-on */
+  .running .ph-play-circle,
+  .running .ph-timer,
+  .music-on .ph-speaker-none,
+  
+  html:not(.running) .ph-pause-circle,
+  html:not(.running) .ph-stop-circle,
+  html:not(.music-on) .ph-speaker-high
+  {
+
+    display: none;
+
+  }
+
+
+
+  .rain-on .ph-cloud-rain, 
+  .forest-on .ph-tree-evergreen,
+  .coffee-on .ph-coffee,
+  .fire-on .ph-campfire  {
+    border: 1px;
+    
+    border-radius: 20px;
+
+    background: var(--buttonMusic-bg-color-secondary);
+    color: var(--button-secondary)
+  }
+
+  .rain-on .ph-tree-evergreen,
+  .rain-on .ph-coffee,
+  .rain-on .ph-campfire,
+  .forest-on .ph-campfire,
+  .forest-on .ph-cloud-rain,
+  .forest-on .ph-coffee,
+  .coffee-on .ph-cloud-rain,
+  .coffee-on .ph-campfire,
+  .coffee-on .ph-tree-evergreen,
+  .fire-on .ph-cloud-rain,
+  .fire-on .ph-coffee,
+  .fire-on .ph-tree-evergreen
+  {
+    display: none;
+  }
